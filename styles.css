@@ -1,3 +1,4 @@
+/* Basic reset */
 body {
     font-family: Arial, sans-serif;
     background-color: #000000;
@@ -6,7 +7,8 @@ body {
     padding: 0;
     max-height: 100%;
 }
-/* Header */
+
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
@@ -18,7 +20,6 @@ header {
     background: black;
     z-index: 1000;
 }
-
 .header-left {
     display: flex;
     flex-direction: column;
@@ -27,40 +28,28 @@ header {
 .header-right {
     padding-right: 20px;
 }
-
 .date {
     font-size: 0.9em;
     opacity: 0.7;
 }
-
+.user-icon {
+    padding-right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
 h1 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 5px 0 0;
 }
 
-.user-icon {
-    padding-right: 20px;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-/* Home Page Overview */
-#overview {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-}
-
-.overview-section {
-    min-height: 30%;
-    background: rgba(255, 255, 255, 0.1);
+/* MAIN => push content below header */
+main {
+    margin-top: 80px; /* Ensures content is not hidden behind header */
     padding: 15px;
-    border-radius: 10px;
 }
 
-/* LOGIN */
+/* LOGIN SCREEN */
 .login-screen {
     display: flex;
     flex-direction: column;
@@ -69,31 +58,24 @@ h1 {
     width: 100%;
     padding-top: 10%;
 }
-.pronunciation {
-    text-align: center;
-    font-size: 1.2rem;
-    color: white;
-    opacity: 0.7;
-    margin-top: -10px;
-}
 .login-header .logo {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
     padding-bottom: 60px;
 }
-/* ✅ Fix Login Screen Padding */
 .login-input {
     width: 80%;
     padding: 12px;
-    margin: 10px 0 5px; /* 🆕 Added padding-bottom for spacing */
+    margin: 10px 0 5px;
     border-radius: 8px;
     border: 1px solid #555;
     background: #222;
     color: #fff;
     font-size: 1rem;
 }
-.login-btn, .register-btn {
+.login-btn,
+.register-btn {
     width: 80%;
     padding: 12px;
     margin-top: 10px;
@@ -103,41 +85,44 @@ h1 {
     cursor: pointer;
     transition: 0.3s ease;
 }
-.login.btn {
-    background-color: #ffffff;
-}
 .login-btn:hover {
     background-color: #b5b5b5;
 }
 .register-btn {
     background-color: #3a2424;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 .register-btn:hover {
     background-color: #383535;
 }
-.error-message, .success-message {
+.error-message,
+.success-message {
     font-size: 0.9rem;
     margin-top: 5px;
 }
 
-.transition-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+/* TRANSITION SCREEN */
+#transition-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background: black;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
     text-align: center;
-    padding: 20px;
+}
+#transition-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+#transition-author {
+    font-size: 1rem;
 }
 
+/* PAGES */
 .page {
     display: none;
 }
@@ -145,9 +130,28 @@ h1 {
     display: block;
 }
 
+/* HOME PAGE */
+#overview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.overview-section {
+    position: relative;
+    min-height: 30%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.section-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+}
 
-
-/* Bottom Navigation */
+/* BOTTOM NAV */
 .bottom-nav {
     display: flex;
     justify-content: space-around;
@@ -159,7 +163,6 @@ h1 {
     bottom: 0;
     width: 100%;
 }
-
 .bottom-nav button {
     background: none;
     border: none;
@@ -167,12 +170,34 @@ h1 {
     cursor: pointer;
     color: #777;
 }
-
 .bottom-nav button.active {
     color: #007aff;
 }
 
-/* ✅ Fix Modal Styling */
+/* TODO PAGE */
+.todo-controls {
+    position: absolute;
+    top: 70px; /* just below header */
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 999;
+}
+.todo-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #777;
+}
+.panel-hidden {
+    display: none;
+    background: #222;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* TASK MODAL & COMMON MODAL STYLING */
 .task-modal {
     position: fixed;
     bottom: 50%;
@@ -186,13 +211,6 @@ h1 {
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-.task-modal label {
-    font-weight: bold;
-    display: block;
-    padding-bottom: 5px;
-}
-
 .close-modal {
     background: none;
     border: none;
@@ -203,47 +221,45 @@ h1 {
     top: 15px;
     right: 20px;
 }
-
-/* ✅ Fix Input Fields Inside Modal */
-.task-modal input,
-.task-modal select {
-    width: 100%;
-    max-width: 90%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background: #333;
-    color: white;
-}
-
-/* ✅ Make Inputs Appear Side by Side */
 .modal-row {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Space between columns */
+    gap: 10px;
 }
-
-/* ✅ Ensure Equal Width for Inputs (Except Description) */
 .modal-column {
-    flex: 1; /* Ensures both columns take up equal space */
+    flex: 1;
     padding-bottom: 1em;
 }
 
-/* ✅ Adjust Description Field */
+/* Labels with spacing */
+.task-modal label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Input fields & Selects & Textarea styling inside modals */
+.task-modal input,
+.task-modal select,
 .task-modal textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border-radius: 5px;
     border: none;
     background: #333;
     color: white;
-    padding-right: 10px;
-    resize: none; /* Prevents resizing */
-    font-family: inherit; /* ✅ Inherit Font Style */
-    padding-right: 0px; /* ✅ Added Right Padding */
+    font-family: inherit;
+    margin: 0 auto 1rem auto;
+    display: block;
 }
 
-/* ✅ Style the Save Button */
+/* Prevent textarea resizing */
+.task-modal textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Save button */
 .save-btn {
     width: 100%;
     background: #007aff;
@@ -256,21 +272,11 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
-
 .save-btn:hover {
     background: #005ecb;
 }
 
-/* ✅ Style Error Messages */
-.error-message {
-    font-size: 0.9rem;
-    margin-top: 5px;
-    color: red;
-    text-align: center;
-    display: none;
-}
-
-/* Static "Add Task" Button */
+/* "Add" Button for modules */
 .add-task-container {
     width: 30%;
     background: white;
@@ -285,15 +291,31 @@ h1 {
     transform: translateX(-50%);
     cursor: pointer;
 }
-
 .add-task-container:hover {
     background: #f5f5f5;
 }
 
-/*
-.img {
-   width: 10px;
-   height: 10px;
-   
+/* HABITS & EVENTS - Basic styling placeholders */
+.habit-controls,
+.event-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
 }
-   */
+.habit-controls button,
+.event-controls button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #777;
+    cursor: pointer;
+}
+#habit-list li,
+#event-list li {
+    margin-bottom: 8px;
+}
+
+/* Grayed out past event */
+.past-event {
+    opacity: 0.5;
+}
