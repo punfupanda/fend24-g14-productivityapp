@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="./assets/favicon.ico">
+</head>
+<body>
+
+    <div id="transition-screen" class="transition-screen" style="display: none;">
+        <blockquote id="transition-quote">...</blockquote>
+        <p id="transition-author">- Author</p>
+    </div>
+
+    
+    <div id="login-container" class="login-screen">
+        <div class="login-header">
+            <!-- <img src="./assets/logo.webp"> -->
+        <h1 class="logo"> apriori.</h1>
+            <p class="pronunciation">/ˈɑːpriˌoːriː/</p> 
+        </div>
+        <input type="text" id="username" placeholder="Username" class="login-input">
+        <input type="password" id="password" placeholder="Password" class="login-input">
+        
+        <p id="login-error" class="error-message" style="display: none; color: red;"></p>
+        <p id="register-error" class="error-message" style="display: none; color: red;"></p>
+        <p id="register-success" class="success-message" style="display: none; color: green;"></p>
+        
+        
+        <button onclick="login()" class="login-btn">Sign in</button>
+        <button onclick="register()" class="register-btn">Register</button>
+    </div>
+
+    <div id="app-container" style="display: none;"> 
+        <header>
+            <div class="header-left">
+                <p class="date" id="current-date"></p>
+                <h1 id="header-title">Home</h1>
+            </div>
+            <div class="header-right">
+                <i class="fa-solid fa-user user-icon" onclick="logout()"></i>
+            </div>
+        </header>
+
+        <main>
+        
+            <section id="home" class="page active">
+                <h1>Home</h1>
+                <p id="welcome-message">Welcome back</p>
+                <blockquote id="home-quote">Get shit done!</blockquote>
+                <div id="overview">
+                    <div class="overview-section">Recent Tasks</div>
+                    <ul id="recent-tasks"></ul>
+                </div>
+            </section>
+
+        
+            <section id="todo" class="page">
+                <div class="todo-controls">
+                    <button id="filter-btn"><i class="fa-solid fa-filter"></i></button>
+                    <button id="sort-btn"><i class="fa-solid fa-sort"></i></button>
+                </div>
+                <h2>Incomplete Tasks</h2>
+                <ul id="todo-list"></ul>
+                <h2>Completed Tasks <button onclick="toggleCompleted()">Show/Hide</button></h2>
+                <ul id="completed-list" style="display: none;"></ul>
+            </section>
+
+        
+            <div id="task-modal" class="task-modal" style="display: none;">
+                <button class="close-modal" onclick="closeTaskModal()">✖</button> 
+            
+                <div class="modal-header">
+                    <h2>New Task</h2>
+                </div>
+            
+                <div class="modal-body">
+                    <div class="modal-row">
+                        <div class="modal-column">
+                            <label for="task-title">What do you need to do?</label> 
+                            <input type="text" id="task-title" placeholder="Enter task title">
+                        </div>
+                        <div class="modal-column">
+                            <label for="task-time">How long does it take?</label> 
+                            <input type="time" id="task-time" placeholder="hh:mm">
+                        </div>
+                    </div>
+            
+                    <div class="modal-row">
+                        <div class="modal-column">
+                            <label for="task-category">Category</label>
+                            <select id="task-category">
+                                <option value="housing">🏡 Housing</option>
+                                <option value="health">💪 Health</option>
+                                <option value="work">💼 Work</option>
+                                <option value="leisure">🎉 Leisure</option>
+                            </select>
+                        </div>
+                        <div class="modal-column">
+                            <label for="task-deadline">Deadline</label>
+                            <input type="date" id="task-deadline">
+                        </div>
+                    </div>
+            
+                    <label for="task-desc">Description</label>
+                    <textarea id="task-desc" placeholder="Enter task description"></textarea>
+            
+                    
+                    <button class="save-btn" onclick="saveTask()">Save</button> 
+                </div>
+            </div>
+
+        <section id="habits" class="page">
+                <h1>Habits</h1>
+                <ul id="habit-list"></ul>
+        </section>
+    
+        <section id="events" class="page">
+                <h1>Events</h1>
+                <ul id="event-list"></ul>
+        </section>
+        </main>
+
+        
+        <div class="add-task-container" onclick="openTaskModal()">Add a Task</div>
+
+        
+        <nav class="bottom-nav">
+            <button onclick="showPage('home', this)" class="active"><i class="fa-solid fa-home"></i></button>
+            <button onclick="showPage('todo', this)"><i class="fa-solid fa-list-check"></i></button>
+            <button onclick="showPage('habits', this)"><i class="fa-solid fa-arrows-rotate"></i></button>
+            <button onclick="showPage('events', this)"><i class="fa-solid fa-calendar-check"></i></button>
+        </nav>
+    </div>
+
+</body>
+</html>
+    

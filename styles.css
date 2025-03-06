@@ -1,0 +1,299 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: black;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.header-right {
+    padding-right: 20px;
+}
+
+.date {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 5px 0 0;
+}
+
+.user-icon {
+    padding-right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Home Page Overview */
+#overview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.overview-section {
+    min-height: 30%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* LOGIN */
+.login-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding-top: 10%;
+}
+.pronunciation {
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0.7;
+    margin-top: -10px;
+}
+.login-header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+}
+/* ✅ Fix Login Screen Padding */
+.login-input {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0 5px; /* 🆕 Added padding-bottom for spacing */
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+}
+.login-btn, .register-btn {
+    width: 80%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.login.btn {
+    background-color: #ffffff;
+}
+.login-btn:hover {
+    background-color: #b5b5b5;
+}
+.register-btn {
+    background-color: #3a2424;
+    color: #FFFFFF;
+}
+.register-btn:hover {
+    background-color: #383535;
+}
+.error-message, .success-message {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.transition-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+
+
+
+/* Bottom Navigation */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 12px 0;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #777;
+}
+
+.bottom-nav button.active {
+    color: #007aff;
+}
+
+/* ✅ Fix Modal Styling */
+.task-modal {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 80%;
+    max-width: 600px;
+    background: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.task-modal label {
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+/* ✅ Fix Input Fields Inside Modal */
+.task-modal input,
+.task-modal select {
+    width: 100%;
+    max-width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #333;
+    color: white;
+}
+
+/* ✅ Make Inputs Appear Side by Side */
+.modal-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between columns */
+}
+
+/* ✅ Ensure Equal Width for Inputs (Except Description) */
+.modal-column {
+    flex: 1; /* Ensures both columns take up equal space */
+    padding-bottom: 1em;
+}
+
+/* ✅ Adjust Description Field */
+.task-modal textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #333;
+    color: white;
+    padding-right: 10px;
+    resize: none; /* Prevents resizing */
+    font-family: inherit; /* ✅ Inherit Font Style */
+    padding-right: 0px; /* ✅ Added Right Padding */
+}
+
+/* ✅ Style the Save Button */
+.save-btn {
+    width: 100%;
+    background: #007aff;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background: #005ecb;
+}
+
+/* ✅ Style Error Messages */
+.error-message {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+/* Static "Add Task" Button */
+.add-task-container {
+    width: 30%;
+    background: white;
+    color: black;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.add-task-container:hover {
+    background: #f5f5f5;
+}
+
+/*
+.img {
+   width: 10px;
+   height: 10px;
+   
+}
+   */
