@@ -6,9 +6,7 @@ body {
     padding: 0;
     max-height: 100%;
   }
-  
-  /* HEADER */
-  header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,9 +22,10 @@ body {
     flex-direction: column;
     padding-left: 20px;
   }
-  .header-right {
-    padding-right: 20px;
-  }
+  .header-right i {
+    padding-right: 60px;
+    padding-bottom: 20px;
+  }  
   .date {
     font-size: 0.9em;
     opacity: 0.7;
@@ -41,13 +40,11 @@ body {
     margin: 5px 0 0;
   }
   
-  /* MAIN */
   main {
     margin-top: 80px;
     padding: 15px;
   }
   
-  /* LOGIN SCREEN */
   .login-screen {
     display: flex;
     flex-direction: column;
@@ -98,8 +95,6 @@ body {
     font-size: 0.9rem;
     margin-top: 5px;
   }
-  
-  /* TRANSITION SCREEN */
   #transition-screen {
     display: flex;
     flex-direction: column;
@@ -120,7 +115,6 @@ body {
     font-size: 1rem;
   }
   
-  /* PAGES */
   .page {
     display: none;
   }
@@ -128,7 +122,6 @@ body {
     display: block;
   }
   
-  /* HOME PAGE */
   #overview {
     display: flex;
     flex-direction: column;
@@ -148,8 +141,11 @@ body {
     right: 10px;
     margin: 0;
   }
+  .section-link p, a {
+    color: rgb(100, 99, 99);
+    font-size: 0.8rem;
+  }
   
-  /* BOTTOM NAV */
   .bottom-nav {
     display: flex;
     justify-content: space-around;
@@ -172,8 +168,9 @@ body {
     color: #007aff;
   }
   
-  /* TODO PAGE */
-  .todo-controls {
+  .todo-controls,
+  .habit-controls,
+  .event-controls {
     position: absolute;
     top: 70px;
     right: 20px;
@@ -181,13 +178,20 @@ body {
     display: flex;
     gap: 10px;
   }
-  .todo-controls button {
+  .todo-controls button,
+  .habit-controls button,
+  .event-controls button {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
     color: #fff;
   }
+  .todo-controls button:hover,
+.habit-controls button:hover,
+.event-controls button:hover {
+  color: #959697;
+}
   .panel-hidden {
     display: none;
     background: #222;
@@ -195,7 +199,6 @@ body {
     margin-top: 10px;
   }
   
-  /* TASK CARDS (used for tasks, habits, events, overview cards) */
   .task-list {
     display: flex;
     flex-direction: column;
@@ -238,7 +241,6 @@ body {
     font-size: 1.2rem;
   }
   
-  /* Custom Checkbox */
   .custom-checkbox {
     appearance: none;
     -webkit-appearance: none;
@@ -262,7 +264,6 @@ body {
     left: 2px;
   }
   
-  /* TASK MODAL & COMMON MODAL STYLING */
   .task-modal {
     position: fixed;
     bottom: 50%;
@@ -334,7 +335,6 @@ body {
     background: #005ecb;
   }
   
-  /* "Add" Button for modules */
   .add-task-container {
     width: 30%;
     background: white;
@@ -351,4 +351,18 @@ body {
   }
   .add-task-container:hover {
     background: #f5f5f5;
+  }
+
+  #app-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 40px;
+  }
+  
+  #toggle-completed-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: gray;
   }

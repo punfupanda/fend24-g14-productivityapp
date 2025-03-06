@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderEvents();
     renderHomePage();
   });
-  
-  // GLOBAL VARIABLES
   let filterStatus = "all";
   let filterCategories = [];
   let sortField = null;
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let eventFilter = "upcoming";
   let editingEventId = null;
   
-  // REGISTER / LOGIN MODULE
   function register() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -62,8 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.removeItem("loggedInUser");
     location.reload();
   }
-  
-  // TRANSITION SCREEN
   function showTransitionScreen() {
     fetch("https://thequoteshub.com/api/random-quote")
       .then((response) => response.json())
@@ -87,8 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3500);
       });
   }
-  
-  // APPLICATION & NAVIGATION
   function showApp() {
     document.getElementById("login-container").style.display = "none";
     document.getElementById("app-container").style.display = "block";
@@ -100,8 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("event-modal").style.display = "none";
     document.getElementById("task-detail-modal").style.display = "none";
   }
-  
-  // Updated showPage and added navigateTo so that bottom nav is highlighted
   function showPage(pageId, element) {
     closeAllModals();
     document.querySelectorAll(".page").forEach((page) => page.classList.remove("active"));
@@ -115,8 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function navigateTo(pageId, navId) {
     showPage(pageId, document.getElementById(navId));
   }
-  
-  // HOME PAGE RENDER
   function renderHomePage() {
     renderRecentTasks();
     renderTopHabits();
@@ -164,10 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
       list.appendChild(li);
     });
   }
-  
-  /* ==========================
-     TO-DO MODULE
-  ========================== */
   document.getElementById("filter-btn").addEventListener("click", () => {
     const panel = document.getElementById("filter-panel");
     panel.classList.toggle("panel-hidden");
@@ -191,8 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("sort-panel").classList.add("panel-hidden");
     renderTasks();
   }
-  
-  // Instead of list items, render tasks as clickable cards
   function openTaskModal(isEditing = false) {
     if (!isEditing) {
       editingTaskId = null;
@@ -307,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createTaskCard(task) {
     let card = document.createElement("div");
     card.className = "task-card";
-    // Custom checkbox
+
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "custom-checkbox";
@@ -318,7 +301,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     card.appendChild(checkbox);
     
-    // Details container
     let details = document.createElement("div");
     details.className = "details";
     let title = document.createElement("div");
@@ -333,7 +315,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     card.appendChild(details);
     
-    // Icon buttons container
     let btnContainer = document.createElement("div");
     btnContainer.className = "btn-container";
     
@@ -357,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     card.appendChild(btnContainer);
     
-    // Open detail modal on card click
     card.addEventListener("click", () => openTaskDetailModal(task));
     
     return card;
@@ -424,9 +404,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderHomePage();
   }
   
-  /* ==========================
-     HABITS MODULE
-  ========================== */
   function toggleHabitFilter() {
     document.getElementById("habit-filter-panel").classList.toggle("panel-hidden");
   }
@@ -570,9 +547,7 @@ document.addEventListener("DOMContentLoaded", function () {
     renderHomePage();
   }
   
-  /* ==========================
-       EVENTS MODULE
-  ========================== */
+
   function toggleEventFilter() {
     document.getElementById("event-filter-panel").classList.toggle("panel-hidden");
   }

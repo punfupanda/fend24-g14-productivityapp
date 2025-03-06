@@ -13,13 +13,13 @@
   <link rel="icon" type="image/png" href="./assets/favicon.ico" />
 </head>
 <body>
-  <!-- TRANSITION SCREEN -->
+
   <div id="transition-screen" class="transition-screen" style="display: none;">
     <blockquote id="transition-quote">...</blockquote>
     <p id="transition-author">- Author</p>
   </div>
 
-  <!-- LOGIN SCREEN -->
+
   <div id="login-container" class="login-screen">
     <div class="login-header">
       <h1 class="logo">apriori.</h1>
@@ -36,7 +36,6 @@
     <button onclick="register()" class="register-btn">Register</button>
   </div>
 
-  <!-- MAIN APP -->
   <div id="app-container" style="display: none;">
     <header>
       <div class="header-left">
@@ -44,25 +43,23 @@
         <h1 id="header-title">Home</h1>
       </div>
       <div class="header-right">
-        <!-- Changed user icon to power-off icon for logout -->
+
         <i class="fa-solid fa-power-off user-icon" onclick="logout()"></i>
       </div>
     </header>
 
     <main>
-      <!-- HOME PAGE -->
+      
       <section id="home" class="page active">
         <div id="overview">
-          <!-- Recent Tasks (rendered as cards) -->
+          
           <div class="overview-section">
             <h3>Recent Tasks</h3>
             <div id="recent-tasks" class="task-list"></div>
             <p class="section-link">
               <a href="#" onclick="navigateTo('todo','nav-todo')">All tasks</a>
             </p>
-          </div>
-
-          <!-- Top Habits (rendered as cards) -->
+          </div>          
           <div class="overview-section">
             <h3>Top Habits</h3>
             <div id="top-habits" class="task-list"></div>
@@ -70,8 +67,6 @@
               <a href="#" onclick="navigateTo('habits','nav-habits')">All habits</a>
             </p>
           </div>
-
-          <!-- Upcoming Events (rendered as cards) -->
           <div class="overview-section">
             <h3>Upcoming Events</h3>
             <div id="upcoming-events" class="task-list"></div>
@@ -82,15 +77,15 @@
         </div>
       </section>
 
-      <!-- TODO PAGE -->
+      
       <section id="todo" class="page">
-        <!-- Filter & Sort Controls -->
+        
         <div class="todo-controls">
           <button id="filter-btn"><i class="fa-solid fa-filter"></i></button>
           <button id="sort-btn"><i class="fa-solid fa-sort"></i></button>
         </div>
 
-        <!-- FILTER PANEL -->
+        
         <div id="filter-panel" class="panel-hidden">
           <h3>Filter Tasks</h3>
           <label>Status: </label>
@@ -108,7 +103,7 @@
           <button onclick="applyFilter()">Apply Filter</button>
         </div>
 
-        <!-- SORT PANEL -->
+        
         <div id="sort-panel" class="panel-hidden">
           <h3>Sort Tasks</h3>
           <label>Sort By: </label>
@@ -137,11 +132,11 @@
         </h2>
         <div id="completed-list" class="task-list" style="display: none;"></div>
 
-        <!-- "Add Task" Button -->
+        
         <div class="add-task-container" onclick="openTaskModal()">Add a Task</div>
       </section>
 
-      <!-- TASK DETAIL MODAL -->
+      
       <div id="task-detail-modal" class="task-modal" style="display: none;">
         <button class="close-modal" onclick="closeTaskDetailModal()">✖</button>
         <div class="modal-header">
@@ -155,7 +150,7 @@
         </div>
       </div>
 
-      <!-- TASK MODAL (Add/Edit Task) -->
+      
       <div id="task-modal" class="task-modal" style="display: none;">
         <button class="close-modal" onclick="closeTaskModal()">✖</button>
         <div class="modal-header">
@@ -193,13 +188,13 @@
         </div>
       </div>
 
-      <!-- HABITS PAGE -->
+      
       <section id="habits" class="page">
         <div class="habit-controls">
           <button onclick="toggleHabitFilter()"><i class="fa-solid fa-filter"></i></button>
           <button onclick="toggleHabitSort()"><i class="fa-solid fa-sort"></i></button>
         </div>
-        <!-- Habit Filter Panel -->
+        
         <div id="habit-filter-panel" class="panel-hidden">
           <h3>Filter by Priority</h3>
           <select id="habit-filter-priority">
@@ -211,7 +206,7 @@
           </select>
           <button onclick="applyHabitFilter()">Apply Filter</button>
         </div>
-        <!-- Habit Sort Panel -->
+        
         <div id="habit-sort-panel" class="panel-hidden">
           <h3>Sort Habits</h3>
           <label>Sort By: </label>
@@ -227,11 +222,11 @@
           <button onclick="applyHabitSort()">Apply Sort</button>
         </div>
         <div id="habit-list" class="task-list"></div>
-        <!-- "Add Habit" Button -->
+        
         <div class="add-task-container" onclick="openHabitModal()">Add Habit</div>
       </section>
 
-      <!-- HABIT MODAL -->
+      
       <div id="habit-modal" class="task-modal" style="display: none;">
         <button class="close-modal" onclick="closeHabitModal()">✖</button>
         <div class="modal-header">
@@ -251,12 +246,12 @@
         </div>
       </div>
 
-      <!-- EVENTS PAGE -->
+      
       <section id="events" class="page">
         <div class="event-controls">
           <button onclick="toggleEventFilter()"><i class="fa-solid fa-filter"></i></button>
         </div>
-        <!-- Event Filter Panel -->
+        
         <div id="event-filter-panel" class="panel-hidden">
           <h3>Filter Events</h3>
           <label>Show:</label>
@@ -268,11 +263,11 @@
           <button onclick="applyEventFilter()">Apply Filter</button>
         </div>
         <div id="event-list" class="task-list"></div>
-        <!-- "Add Event" Button -->
+        
         <div class="add-task-container" onclick="openEventModal()">Add Event</div>
       </section>
 
-      <!-- EVENT MODAL -->
+      
       <div id="event-modal" class="task-modal" style="display: none;">
         <button class="close-modal" onclick="closeEventModal()">✖</button>
         <div class="modal-header">
@@ -290,7 +285,7 @@
       </div>
     </main>
 
-    <!-- BOTTOM NAVIGATION -->
+    
     <nav class="bottom-nav">
       <button id="nav-home" onclick="showPage('home', this)" class="active">
         <i class="fa-solid fa-home"></i>
