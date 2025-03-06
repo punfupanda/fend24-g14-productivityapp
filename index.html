@@ -44,7 +44,8 @@
         <h1 id="header-title">Home</h1>
       </div>
       <div class="header-right">
-        <i class="fa-solid fa-user user-icon" onclick="logout()"></i>
+        <!-- Changed user icon to power-off icon for logout -->
+        <i class="fa-solid fa-power-off user-icon" onclick="logout()"></i>
       </div>
     </header>
 
@@ -52,30 +53,30 @@
       <!-- HOME PAGE -->
       <section id="home" class="page active">
         <div id="overview">
-          <!-- Recent Tasks -->
+          <!-- Recent Tasks (rendered as cards) -->
           <div class="overview-section">
             <h3>Recent Tasks</h3>
-            <ul id="recent-tasks"></ul>
+            <div id="recent-tasks" class="task-list"></div>
             <p class="section-link">
-              <a href="#" onclick="showPage('todo', this)">All tasks</a>
+              <a href="#" onclick="navigateTo('todo','nav-todo')">All tasks</a>
             </p>
           </div>
 
-          <!-- Top Habits -->
+          <!-- Top Habits (rendered as cards) -->
           <div class="overview-section">
             <h3>Top Habits</h3>
-            <ul id="top-habits"></ul>
+            <div id="top-habits" class="task-list"></div>
             <p class="section-link">
-              <a href="#" onclick="showPage('habits', this)">All habits</a>
+              <a href="#" onclick="navigateTo('habits','nav-habits')">All habits</a>
             </p>
           </div>
 
-          <!-- Upcoming Events -->
+          <!-- Upcoming Events (rendered as cards) -->
           <div class="overview-section">
             <h3>Upcoming Events</h3>
-            <ul id="upcoming-events"></ul>
+            <div id="upcoming-events" class="task-list"></div>
             <p class="section-link">
-              <a href="#" onclick="showPage('events', this)">All events</a>
+              <a href="#" onclick="navigateTo('events','nav-events')">All events</a>
             </p>
           </div>
         </div>
@@ -83,7 +84,7 @@
 
       <!-- TODO PAGE -->
       <section id="todo" class="page">
-        <!-- Filter & Sort top-right -->
+        <!-- Filter & Sort Controls -->
         <div class="todo-controls">
           <button id="filter-btn"><i class="fa-solid fa-filter"></i></button>
           <button id="sort-btn"><i class="fa-solid fa-sort"></i></button>
@@ -127,20 +128,34 @@
         </div>
 
         <h2>Incomplete Tasks</h2>
-        <ul id="todo-list"></ul>
+        <div id="todo-list" class="task-list"></div>
         <h2>
           Completed Tasks
           <button id="toggle-completed-btn" onclick="toggleCompleted()">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </h2>
-        <ul id="completed-list" style="display: none;"></ul>
+        <div id="completed-list" class="task-list" style="display: none;"></div>
 
-        <!-- "Add Task" Button: Only on To-Do page -->
+        <!-- "Add Task" Button -->
         <div class="add-task-container" onclick="openTaskModal()">Add a Task</div>
       </section>
 
-      <!-- TASK MODAL -->
+      <!-- TASK DETAIL MODAL -->
+      <div id="task-detail-modal" class="task-modal" style="display: none;">
+        <button class="close-modal" onclick="closeTaskDetailModal()">✖</button>
+        <div class="modal-header">
+          <h2 id="detail-title"></h2>
+        </div>
+        <div class="modal-body">
+          <p id="detail-desc"></p>
+          <p id="detail-time"></p>
+          <p id="detail-category"></p>
+          <p id="detail-deadline"></p>
+        </div>
+      </div>
+
+      <!-- TASK MODAL (Add/Edit Task) -->
       <div id="task-modal" class="task-modal" style="display: none;">
         <button class="close-modal" onclick="closeTaskModal()">✖</button>
         <div class="modal-header">
@@ -184,7 +199,6 @@
           <button onclick="toggleHabitFilter()"><i class="fa-solid fa-filter"></i></button>
           <button onclick="toggleHabitSort()"><i class="fa-solid fa-sort"></i></button>
         </div>
-
         <!-- Habit Filter Panel -->
         <div id="habit-filter-panel" class="panel-hidden">
           <h3>Filter by Priority</h3>
@@ -197,7 +211,6 @@
           </select>
           <button onclick="applyHabitFilter()">Apply Filter</button>
         </div>
-
         <!-- Habit Sort Panel -->
         <div id="habit-sort-panel" class="panel-hidden">
           <h3>Sort Habits</h3>
@@ -213,10 +226,8 @@
           </select>
           <button onclick="applyHabitSort()">Apply Sort</button>
         </div>
-
-        <ul id="habit-list"></ul>
-
-        <!-- "Add Habit" Button: Only on Habits page -->
+        <div id="habit-list" class="task-list"></div>
+        <!-- "Add Habit" Button -->
         <div class="add-task-container" onclick="openHabitModal()">Add Habit</div>
       </section>
 
@@ -229,7 +240,6 @@
         <div class="modal-body">
           <label for="habit-title">Title</label>
           <input type="text" id="habit-title" placeholder="e.g. Meditation" />
-
           <label for="habit-priority">Priority</label>
           <select id="habit-priority">
             <option value="" disabled selected>Select priority</option>
@@ -237,7 +247,6 @@
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
-
           <button class="save-btn" onclick="saveHabit()">Save</button>
         </div>
       </div>
@@ -247,7 +256,6 @@
         <div class="event-controls">
           <button onclick="toggleEventFilter()"><i class="fa-solid fa-filter"></i></button>
         </div>
-
         <!-- Event Filter Panel -->
         <div id="event-filter-panel" class="panel-hidden">
           <h3>Filter Events</h3>
@@ -259,10 +267,8 @@
           </select>
           <button onclick="applyEventFilter()">Apply Filter</button>
         </div>
-
-        <ul id="event-list"></ul>
-
-        <!-- "Add Event" Button: Only on Events page -->
+        <div id="event-list" class="task-list"></div>
+        <!-- "Add Event" Button -->
         <div class="add-task-container" onclick="openEventModal()">Add Event</div>
       </section>
 
@@ -275,13 +281,10 @@
         <div class="modal-body">
           <label for="event-name">Event Name</label>
           <input type="text" id="event-name" placeholder="e.g. Team Meeting" />
-
           <label for="event-start">Start Date & Time</label>
           <input type="datetime-local" id="event-start" />
-
           <label for="event-end">End Date & Time (Optional)</label>
           <input type="datetime-local" id="event-end" />
-
           <button class="save-btn" onclick="saveEvent()">Save</button>
         </div>
       </div>
@@ -289,16 +292,16 @@
 
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
-      <button onclick="showPage('home', this)" class="active">
+      <button id="nav-home" onclick="showPage('home', this)" class="active">
         <i class="fa-solid fa-home"></i>
       </button>
-      <button onclick="showPage('todo', this)">
+      <button id="nav-todo" onclick="showPage('todo', this)">
         <i class="fa-solid fa-list-check"></i>
       </button>
-      <button onclick="showPage('habits', this)">
+      <button id="nav-habits" onclick="showPage('habits', this)">
         <i class="fa-solid fa-arrows-rotate"></i>
       </button>
-      <button onclick="showPage('events', this)">
+      <button id="nav-events" onclick="showPage('events', this)">
         <i class="fa-solid fa-calendar-check"></i>
       </button>
     </nav>

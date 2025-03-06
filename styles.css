@@ -1,15 +1,14 @@
-/* Basic reset */
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #000;
+    color: #fff;
     margin: 0;
     padding: 0;
     max-height: 100%;
-}
-
-/* HEADER */
-header {
+  }
+  
+  /* HEADER */
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,52 +18,51 @@ header {
     width: 100%;
     background: black;
     z-index: 1000;
-}
-.header-left {
+  }
+  .header-left {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
-}
-.header-right {
+  }
+  .header-right {
     padding-right: 20px;
-}
-.date {
+  }
+  .date {
     font-size: 0.9em;
     opacity: 0.7;
-}
-.user-icon {
-    padding-right: 20px;
+  }
+  .user-icon, .fa-power-off {
     font-size: 1.5em;
     cursor: pointer;
-}
-h1 {
+  }
+  h1 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 5px 0 0;
-}
-
-/* MAIN => push content below header */
-main {
-    margin-top: 80px; /* Ensures content is not hidden behind header */
+  }
+  
+  /* MAIN */
+  main {
+    margin-top: 80px;
     padding: 15px;
-}
-
-/* LOGIN SCREEN */
-.login-screen {
+  }
+  
+  /* LOGIN SCREEN */
+  .login-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
     padding-top: 10%;
-}
-.login-header .logo {
+  }
+  .login-header .logo {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
     padding-bottom: 60px;
-}
-.login-input {
+  }
+  .login-input {
     width: 80%;
     padding: 12px;
     margin: 10px 0 5px;
@@ -73,9 +71,9 @@ main {
     background: #222;
     color: #fff;
     font-size: 1rem;
-}
-.login-btn,
-.register-btn {
+  }
+  .login-btn,
+  .register-btn {
     width: 80%;
     padding: 12px;
     margin-top: 10px;
@@ -84,25 +82,25 @@ main {
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s ease;
-}
-.login-btn:hover {
+  }
+  .login-btn:hover {
     background-color: #b5b5b5;
-}
-.register-btn {
+  }
+  .register-btn {
     background-color: #3a2424;
-    color: #ffffff;
-}
-.register-btn:hover {
+    color: #fff;
+  }
+  .register-btn:hover {
     background-color: #383535;
-}
-.error-message,
-.success-message {
+  }
+  .error-message,
+  .success-message {
     font-size: 0.9rem;
     margin-top: 5px;
-}
-
-/* TRANSITION SCREEN */
-#transition-screen {
+  }
+  
+  /* TRANSITION SCREEN */
+  #transition-screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,48 +109,48 @@ main {
     background: black;
     color: white;
     text-align: center;
-}
-#transition-quote {
+  }
+  #transition-quote {
     font-size: 1.2rem;
     font-style: italic;
     font-weight: bold;
     margin-bottom: 0.5rem;
-}
-#transition-author {
+  }
+  #transition-author {
     font-size: 1rem;
-}
-
-/* PAGES */
-.page {
+  }
+  
+  /* PAGES */
+  .page {
     display: none;
-}
-.page.active {
+  }
+  .page.active {
     display: block;
-}
-
-/* HOME PAGE */
-#overview {
+  }
+  
+  /* HOME PAGE */
+  #overview {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.overview-section {
+  }
+  .overview-section {
     position: relative;
     min-height: 30%;
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
-}
-.section-link {
+  }
+  .section-link {
     position: absolute;
     bottom: 10px;
     right: 10px;
     margin: 0;
-}
-
-/* BOTTOM NAV */
-.bottom-nav {
+  }
+  
+  /* BOTTOM NAV */
+  .bottom-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -162,43 +160,110 @@ main {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-.bottom-nav button {
+  }
+  .bottom-nav button {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
     color: #777;
-}
-.bottom-nav button.active {
+  }
+  .bottom-nav button.active {
     color: #007aff;
-}
-
-/* TODO PAGE */
-.todo-controls {
+  }
+  
+  /* TODO PAGE */
+  .todo-controls {
     position: absolute;
-    top: 70px; /* just below header */
+    top: 70px;
     right: 20px;
+    z-index: 1100;
     display: flex;
     gap: 10px;
-    z-index: 999;
-}
-.todo-controls button {
+  }
+  .todo-controls button {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
-    color: #777;
-}
-.panel-hidden {
+    color: #fff;
+  }
+  .panel-hidden {
     display: none;
     background: #222;
     padding: 10px;
     margin-top: 10px;
-}
-
-/* TASK MODAL & COMMON MODAL STYLING */
-.task-modal {
+  }
+  
+  /* TASK CARDS (used for tasks, habits, events, overview cards) */
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .task-card {
+    background: #222;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .task-card:hover {
+    background: #333;
+  }
+  .task-card .details {
+    flex: 1;
+    margin-left: 10px;
+  }
+  .task-card .title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .task-card .meta {
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  .btn-container {
+    display: flex;
+    gap: 5px;
+  }
+  .icon-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  /* Custom Checkbox */
+  .custom-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #777;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+  }
+  .custom-checkbox:checked {
+    border-color: green;
+    background-color: green;
+  }
+  .custom-checkbox:checked::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #fff;
+    position: absolute;
+    left: 2px;
+  }
+  
+  /* TASK MODAL & COMMON MODAL STYLING */
+  .task-modal {
     position: fixed;
     bottom: 50%;
     left: 50%;
@@ -210,8 +275,8 @@ main {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-.close-modal {
+  }
+  .close-modal {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -220,28 +285,25 @@ main {
     position: absolute;
     top: 15px;
     right: 20px;
-}
-.modal-row {
+  }
+  .modal-row {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 10px;
-}
-.modal-column {
+    justify-content: space-between;
+  }
+  .modal-column {
     flex: 1;
     padding-bottom: 1em;
-}
-
-/* Labels with spacing */
-.task-modal label {
+  }
+  .task-modal label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
-}
-
-/* Input fields & Selects & Textarea styling inside modals */
-.task-modal input,
-.task-modal select,
-.task-modal textarea {
+  }
+  .task-modal input,
+  .task-modal select,
+  .task-modal textarea {
     width: 90%;
     padding: 10px;
     border-radius: 5px;
@@ -251,16 +313,12 @@ main {
     font-family: inherit;
     margin: 0 auto 1rem auto;
     display: block;
-}
-
-/* Prevent textarea resizing */
-.task-modal textarea {
+  }
+  .task-modal textarea {
     resize: none;
     height: 80px;
-}
-
-/* Save button */
-.save-btn {
+  }
+  .save-btn {
     width: 100%;
     background: #007aff;
     color: white;
@@ -271,13 +329,13 @@ main {
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
-}
-.save-btn:hover {
+  }
+  .save-btn:hover {
     background: #005ecb;
-}
-
-/* "Add" Button for modules */
-.add-task-container {
+  }
+  
+  /* "Add" Button for modules */
+  .add-task-container {
     width: 30%;
     background: white;
     color: black;
@@ -290,32 +348,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
-}
-.add-task-container:hover {
+  }
+  .add-task-container:hover {
     background: #f5f5f5;
-}
-
-/* HABITS & EVENTS - Basic styling placeholders */
-.habit-controls,
-.event-controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-.habit-controls button,
-.event-controls button {
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    color: #777;
-    cursor: pointer;
-}
-#habit-list li,
-#event-list li {
-    margin-bottom: 8px;
-}
-
-/* Grayed out past event */
-.past-event {
-    opacity: 0.5;
-}
+  }
